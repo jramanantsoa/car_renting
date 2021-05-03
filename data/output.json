@@ -6,17 +6,17 @@
         {
           "who": "driver",
           "type": "debit",
-          "amount": 0
+          "amount": 3000
         },
         {
           "who": "owner",
           "type": "credit",
-          "amount": 0
+          "amount": 2100
         },
         {
           "who": "insurance",
           "type": "credit",
-          "amount": 0
+          "amount": 450
         },
         {
           "who": "assistance",
@@ -26,7 +26,7 @@
         {
           "who": "drivy",
           "type": "credit",
-          "amount": -100
+          "amount": 350
         }
       ]
     },
@@ -36,17 +36,17 @@
         {
           "who": "driver",
           "type": "debit",
-          "amount": 0
+          "amount": 6800
         },
         {
           "who": "owner",
           "type": "credit",
-          "amount": 0
+          "amount": 4760
         },
         {
           "who": "insurance",
           "type": "credit",
-          "amount": 0
+          "amount": 1020
         },
         {
           "who": "assistance",
@@ -56,7 +56,7 @@
         {
           "who": "drivy",
           "type": "credit",
-          "amount": -200
+          "amount": 820
         }
       ]
     },
@@ -66,17 +66,17 @@
         {
           "who": "driver",
           "type": "debit",
-          "amount": 0
+          "amount": 27800
         },
         {
           "who": "owner",
           "type": "credit",
-          "amount": 0
+          "amount": 19460
         },
         {
           "who": "insurance",
           "type": "credit",
-          "amount": 0
+          "amount": 4170
         },
         {
           "who": "assistance",
@@ -86,7 +86,7 @@
         {
           "who": "drivy",
           "type": "credit",
-          "amount": -1200
+          "amount": 2970
         }
       ]
     }
