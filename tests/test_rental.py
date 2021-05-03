@@ -46,6 +46,7 @@ def test_calculatecommission():
     r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
     r2 = Rental(2, 1, "2015-03-31", "2015-04-01", 300)
     r1.calculate_price_with_options(2000, 10)
+    r2.calculate_price_with_options(2000, 10)
     assert r1.calculatecommission() == {
         "insurance_fee": 450,
         "assistance_fee": 100,
