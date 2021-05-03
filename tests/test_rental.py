@@ -36,9 +36,28 @@ def test_calculatecommission():
         "insurance_fee": 450,
         "assistance_fee": 100,
         "drivy_fee": 350
-      }
+    }
     assert r2.calculatecommission() == {
         "insurance_fee": 1020,
         "assistance_fee": 200,
         "drivy_fee": 820
-      }
+    }
+
+
+def test_setactions():
+    r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
+    r1.setactions()
+
+
+def test_createaction():
+    r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
+    assert r1.createaction("driver",3000) =={
+          "who": "driver",
+          "type": "debit",
+          "amount": 3000
+        }
+    assert r1.createaction("owner",2100) =={
+          "who": "owner",
+          "type": "credit",
+          "amount": 2100
+        }

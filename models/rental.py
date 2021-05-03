@@ -55,3 +55,33 @@ class Rental:
             "drivy_fee": drivy_fee
         }
         return commission
+
+    def createaction(self,actor,price):
+        who = actor
+        action_type =""
+        if actor == "driver":
+            action_type = "debit"
+        else:
+            action_type = "credit"
+        action = {
+            "who": who,
+            "type": action_type,
+            "amount": price
+        }
+        return action
+
+    def setactions(self):
+        actions = []
+        driver = self.createaction("driver",self.price)
+        actions.append(driver)
+        commission = self.calculatecommission()
+        insurance = self.createaction("insurance",commission["insurance_fee"])
+        assistance = self.createaction("assistance", commission["assistance_fee"])
+        drivy = self.createaction("drivy", commission["drivy_fee"])
+        commission_total =commission["insurance_fee"] + commission["assistance_fee"] + commission["drivy_fee"]
+        owner = self.createaction("owner",self.price -commission_total)
+        actions.append(owner)
+        actions.append(insurance)
+        actions.append(assistance)
+        actions.append(drivy)
+        return actions
