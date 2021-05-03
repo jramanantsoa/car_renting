@@ -1,7 +1,10 @@
 import datetime
 
+import pytest
+
 from models.option import Option
 from models.rental import Rental
+
 
 
 def test_stringtodate():
@@ -23,22 +26,26 @@ def test_calculate_price_with_options():
     r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
     r2 = Rental(2, 1, "2015-03-31", "2015-04-01", 300)
     r1.options = ["gps", "baby_seat"]
+    r2.options = ["additional_insurance"]
     r1.calculate_price_with_options(2000, 10)
+    r2.calculate_price_with_options(2000,10)
     assert r1.price == 3700
+    assert  r2.price == 8800
 
 def test_calculate_price_without_options():
     r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
     r2 = Rental(2, 1, "2015-03-31", "2015-04-01", 300)
     r1.options = ["gps", "baby_seat"]
+    r2.options = ["additional_insurance"]
     r1.calculate_price_with_options(2000, 10)
+    r2.calculate_price_with_options(2000, 10)
     assert r1.calculate_price_without_options() == 3000
-
+    assert r2.calculate_price_without_options() == 6800
 
 def test_calculatecommission():
     r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
     r2 = Rental(2, 1, "2015-03-31", "2015-04-01", 300)
     r1.calculate_price_with_options(2000, 10)
-    r2.calculate_price_with_options(2000, 10)
     assert r1.calculatecommission() == {
         "insurance_fee": 450,
         "assistance_fee": 100,
@@ -50,11 +57,38 @@ def test_calculatecommission():
         "drivy_fee": 820
     }
 
-
 def test_setactions():
     r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
+    r1.options = ["gps","baby_seat"]
+    r1.calculate_price_with_options(2000,10)
     r1.setactions()
-
+    assert r1.setactions() == [
+        {
+          "who": "driver",
+          "type": "debit",
+          "amount": 3700
+        },
+        {
+          "who": "owner",
+          "type": "credit",
+          "amount": 2800
+        },
+        {
+          "who": "insurance",
+          "type": "credit",
+          "amount": 450
+        },
+        {
+          "who": "assistance",
+          "type": "credit",
+          "amount": 100
+        },
+        {
+          "who": "drivy",
+          "type": "credit",
+          "amount": 350
+        }
+      ]
 
 def test_createaction():
     r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
@@ -68,7 +102,6 @@ def test_createaction():
         "type": "credit",
         "amount": 2100
     }
-
 
 def test_getoptions():
     r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
