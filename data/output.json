@@ -2,21 +2,25 @@
   "rentals": [
     {
       "id": 1,
+      "options": [
+        "gps",
+        "baby_seat"
+      ],
       "actions": [
         {
           "who": "driver",
           "type": "debit",
-          "amount": 0
+          "amount": 3700
         },
         {
           "who": "owner",
           "type": "credit",
-          "amount": 0
+          "amount": 2800
         },
         {
           "who": "insurance",
           "type": "credit",
-          "amount": 0
+          "amount": 450
         },
         {
           "who": "assistance",
@@ -26,27 +30,30 @@
         {
           "who": "drivy",
           "type": "credit",
-          "amount": -100
+          "amount": 350
         }
       ]
     },
     {
       "id": 2,
+      "options": [
+        "additional_insurance"
+      ],
       "actions": [
         {
           "who": "driver",
           "type": "debit",
-          "amount": 0
+          "amount": 8800
         },
         {
           "who": "owner",
           "type": "credit",
-          "amount": 0
+          "amount": 4760
         },
         {
           "who": "insurance",
           "type": "credit",
-          "amount": 0
+          "amount": 1020
         },
         {
           "who": "assistance",
@@ -56,27 +63,28 @@
         {
           "who": "drivy",
           "type": "credit",
-          "amount": -200
+          "amount": 2820
         }
       ]
     },
     {
       "id": 3,
+      "options": [],
       "actions": [
         {
           "who": "driver",
           "type": "debit",
-          "amount": 0
+          "amount": 27800
         },
         {
           "who": "owner",
           "type": "credit",
-          "amount": 0
+          "amount": 19460
         },
         {
           "who": "insurance",
           "type": "credit",
-          "amount": 0
+          "amount": 4170
         },
         {
           "who": "assistance",
@@ -86,7 +94,7 @@
         {
           "who": "drivy",
           "type": "credit",
-          "amount": -1200
+          "amount": 2970
         }
       ]
     }
