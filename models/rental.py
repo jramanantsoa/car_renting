@@ -24,9 +24,25 @@ class Rental:
         return [car for car in cars_list if car.id == self.car_id][0]
 
     def calculate_price(self,price_per_day,price_per_km):
-        total_price = self.rentalduration()*price_per_day + self.distance * price_per_km
+        total_days_price = price_per_day
+        actual_day_price = price_per_day
+        if self.rentalduration() == 1:
+            self.price = price_per_day + self.distance*price_per_km
+        else:
+            for day in range(2, self.rentalduration()+1):
+                if day == 2:
+                    actual_day_price *= 0.9
+                elif day == 5:
+                    actual_day_price = price_per_day
+                    actual_day_price *= 0.7
+                elif day == 11:
+                    actual_day_price = price_per_day
+                    actual_day_price *= 0.5
+                total_days_price += actual_day_price
+
+        total_price = total_days_price + self.distance * price_per_km
         #print(f" price per day {price_per_day}")
         #print(f" price per km{price_per_km}")
         #print(f" duration {self.rentalduration()}")
-        self.price = total_price
+        self.price = int(total_price)
         return self.price

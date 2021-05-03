@@ -18,8 +18,9 @@ def test_rentalduration():
 
 
 def test_calculate_price():
-    r1 = Rental(1, 1, "2017-12-8", "2017-12-10", 100)
-    r2 = Rental(2, 1, "2017-12-14", "2017-12-18", 550)
+    r1 = Rental(1, 1, "2017-12-8", "2017-12-8", 100)
+    r2 = Rental(2, 1, "2015-03-31", "2015-04-01", 300)
     r1.calculate_price(2000, 10)
     r2.calculate_price(2000, 10)
-    assert r1.price == 7000
+    assert r1.price == 3000
+    assert r2.price == 6800
