@@ -30,7 +30,7 @@ for rental in rentals:
 
 for r in rentals_list:
     car = r.getcar(cars_list)
-    #price = r.calculate_price(car.price_per_day,car.price_per_km)
+    price = r.calculate_price(car.price_per_day,car.price_per_km)
     commission = r.calculatecommission()
     actions = r.setactions()
     dict_rental = {"id":r.id,"actions":actions}
