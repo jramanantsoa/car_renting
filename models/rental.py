@@ -41,8 +41,17 @@ class Rental:
                 total_days_price += actual_day_price
 
         total_price = total_days_price + self.distance * price_per_km
-        #print(f" price per day {price_per_day}")
-        #print(f" price per km{price_per_km}")
-        #print(f" duration {self.rentalduration()}")
         self.price = int(total_price)
         return self.price
+
+    def calculatecommission(self):
+        commission_price = self.price * 0.3
+        insurance_fee = int(commission_price/2)
+        assistance_fee = int(100 * self.rentalduration())
+        drivy_fee = int(commission_price - (insurance_fee + assistance_fee))
+        commission = {
+            "insurance_fee": insurance_fee,
+            "assistance_fee": assistance_fee,
+            "drivy_fee": drivy_fee
+        }
+        return commission

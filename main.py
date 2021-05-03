@@ -31,7 +31,8 @@ for rental in rentals:
 for r in rentals_list:
     car = r.getcar(cars_list)
     price = r.calculate_price(car.price_per_day,car.price_per_km)
-    dict_rental = {"id":r.id,"price":price}
+    commission = r.calculatecommission()
+    dict_rental = {"id":r.id,"price":price,"commission":commission}
     output["rentals"].append(dict_rental)
 #print(output)
 
